@@ -80,6 +80,12 @@ app.post('/api/request', (req, res) => {
         return res.status(404).json({ error: "House ID not found in database!" });
     }
 
+    // Check if the house is already in the priority queue
+    const alreadyInQueue = wasteQueue.heap.some(job => job.houseId === houseId);
+    if (alreadyInQueue) {
+        return res.status(400).json({ error: "This house is already in the pending queue!" });
+    }
+
     wasteQueue.insert(houseId, wasteType, priority);
     res.json({ message: "Collection request added to priority queue!", queueSize: wasteQueue.heap.length });
 });

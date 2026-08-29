@@ -1,17 +1,22 @@
 class PriorityQueue {
     constructor() {
-        this.values = [];
+        this.values = [];//data save krgnna l hduva
     }
     enqueue(val, priority) {
-        this.values.push({val, priority});
-        this.sort();
+        //aluth data ekk dura priority ek  array ekt gtta(zone,priority)
+
+        this.values.push({ val, priority });
+        this.sort();//
     }
+    //array eke mulinma inna kena ain karanava value aduma kena
     dequeue() {
         return this.values.shift();
     }
+    //value adu eke idan wadi ekata sort karanava
     sort() {
         this.values.sort((a, b) => a.priority - b.priority);
     }
+    //array hisnam true return karanava
     isEmpty() {
         return this.values.length === 0;
     }
@@ -19,17 +24,19 @@ class PriorityQueue {
 
 class CityGraph {
     constructor() {
+        //graph eke tyana data(parawal,zones) tayagannava
         this.adjacencyList = {};
     }
 
     // Add a new location (junction or house area)
-    addLocation(location) {
+    addLocation(location) {//klin ek add krl nttn save krnva
         if (!this.adjacencyList[location]) {
             this.adjacencyList[location] = [];
         }
     }
 
     // Add a road between two locations with a distance
+    //ngara 2m tynvnn
     addRoad(location1, location2, distance) {
         if (this.adjacencyList[location1] && this.adjacencyList[location2]) {
             this.adjacencyList[location1].push({ node: location2, weight: distance });
@@ -49,7 +56,7 @@ class CityGraph {
 
     // Dijkstra's Algorithm for Shortest Path
     dijkstra(start, finish) {
-        const nodes = new PriorityQueue();
+        const nodes = new PriorityQueue();//lgama tyn ngrayaa allagnna
         const distances = {};
         const previous = {};
         let path = []; // to return at end
@@ -69,7 +76,7 @@ class CityGraph {
 
         while (!nodes.isEmpty()) {
             smallest = nodes.dequeue().val;
-            
+
             if (smallest === finish) {
                 // We are done, build path to return
                 while (previous[smallest]) {
@@ -86,7 +93,7 @@ class CityGraph {
                     // Calculate new distance to neighboring node
                     let candidate = distances[smallest] + nextNode.weight;
                     let nextNeighbor = nextNode.node;
-                    
+
                     if (candidate < distances[nextNeighbor]) {
                         // Updating new smallest distance to neighbor
                         distances[nextNeighbor] = candidate;

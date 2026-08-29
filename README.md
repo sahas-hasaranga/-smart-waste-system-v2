@@ -6,6 +6,12 @@
 
 An enterprise-grade, data-driven software solution designed to revolutionize municipal solid waste management. Built as an academic project to demonstrate the practical application of advanced data structures and algorithms in solving real-world logistical challenges.
 
+## 📸 Screenshots
+
+![Screenshot 1](frontend/New%20folder/Screenshot%202026-08-29%20122929.png)
+![Screenshot 2](frontend/New%20folder/Screenshot%202026-08-29%20123031.png)
+![Screenshot 3](frontend/New%20folder/Screenshot%202026-08-29%20123053.png)
+
 ## 🚀 Key Features & Data Structures Used
 
 This application avoids sluggish database queries by relying entirely on highly optimized, in-memory data structures:
